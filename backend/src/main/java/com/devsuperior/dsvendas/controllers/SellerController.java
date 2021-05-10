@@ -14,13 +14,14 @@ import com.devsuperior.dsvendas.service.SellerService;
 @RestController
 @RequestMapping(value = "/sellers")
 public class SellerController {
-	
+
 	@Autowired
-	private SellerService service;
+	private SellerService sellerService;
 	
 	@GetMapping
 	public ResponseEntity<List<SellerDTO>> findAll() {
-		List<SellerDTO> list = service.findAll();
+		List<SellerDTO> list = sellerService.findAll();
 		return ResponseEntity.ok(list);
 	}
+	
 }

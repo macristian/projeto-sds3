@@ -13,78 +13,76 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tb_sales")
 public class Sale {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private Integer visited;
+	private Integer deals;
+	private Double amount;
+	private LocalDate date;
+	
+	@ManyToOne
+	@JoinColumn(name = "seller_id")
+	private Seller seller;
+	
+	public Sale() {
+	}
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private Integer visited;
-    private Integer deals;
-    private Integer amount;
-    private LocalDate date;
+	public Sale(Long id, Integer visited, Integer deals, Double amount, LocalDate date, Seller seller) {
+		this.id = id;
+		this.visited = visited;
+		this.deals = deals;
+		this.amount = amount;
+		this.date = date;
+		this.seller = seller;
+	}
 
-    @ManyToOne
-    @JoinColumn(name="seller_id")
-    private Seller seller;
+	public Long getId() {
+		return id;
+	}
 
-    public Sale(){
-        
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public Sale(Long id, Integer visited, Integer deals, Integer amount, LocalDate date, Seller seller) {
-        this.id = id;
-        this.visited = visited;
-        this.deals = deals;
-        this.amount = amount;
-        this.date = date;
-        this.seller = seller;
-    }
+	public Integer getVisited() {
+		return visited;
+	}
 
-    public Long getId() {
-        return this.id;
-    }
+	public void setVisited(Integer visited) {
+		this.visited = visited;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Integer getDeals() {
+		return deals;
+	}
 
-    public Integer getVisited() {
-        return this.visited;
-    }
+	public void setDeals(Integer deals) {
+		this.deals = deals;
+	}
 
-    public void setVisited(Integer visited) {
-        this.visited = visited;
-    }
+	public Double getAmount() {
+		return amount;
+	}
 
-    public Integer getDeals() {
-        return this.deals;
-    }
+	public void setAmount(Double amount) {
+		this.amount = amount;
+	}
 
-    public void setDeals(Integer deals) {
-        this.deals = deals;
-    }
+	public LocalDate getDate() {
+		return date;
+	}
 
-    public Integer getAmount() {
-        return this.amount;
-    }
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
 
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
+	public Seller getSeller() {
+		return seller;
+	}
 
-    public LocalDate getDate() {
-        return this.date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public Seller getSeller() {
-        return this.seller;
-    }
-
-    public void setSeller(Seller seller) {
-        this.seller = seller;
-    }
-    
+	public void setSeller(Seller seller) {
+		this.seller = seller;
+	}
 }
